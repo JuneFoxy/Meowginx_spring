@@ -1,0 +1,33 @@
+root@CN-INDEX:/projects_certs# ./gencert.sh
+Enter your domain [www.example.com]: www.meowginx.com
+Create server key...
+Enter PEM pass phrase:
+Verifying - Enter PEM pass phrase:
+Create server certificate signing request...
+Enter pass phrase for www.meowginx.com.key:
+Remove password...
+Enter pass phrase for www.meowginx.com.origin.key:
+writing RSA key
+Sign SSL certificate...
+Certificate request self-signature ok
+subject=C = US, ST = Mars, L = iTranswarp, O = iTranswarp, OU = iTranswarp, CN = www.meowginx.com
+TODO:
+Copy www.meowginx.com.crt to /etc/nginx/ssl/www.meowginx.com.crt
+Copy www.meowginx.com.key to /etc/nginx/ssl/www.meowginx.com.key
+Add configuration in nginx:
+server {
+    ...
+    listen 443 ssl;
+    ssl_certificate     /etc/nginx/ssl/www.meowginx.com.crt;
+    ssl_certificate_key /etc/nginx/ssl/www.meowginx.com.key;
+}
+root@CN-INDEX:/projects_certs# ls -la
+total 28
+drwxr-xr-x  2 root root 4096 Jun 13 22:04 .
+drwxr-xr-x 25 root root 4096 Jun 13 21:53 ..
+-rwxrwxrwx  1 root root  949 Jun 13 21:56 gencert.sh
+-rw-r--r--  1 root root  904 Jun 13 22:04 www.meowginx.com.crt
+-rw-r--r--  1 root root  672 Jun 13 22:04 www.meowginx.com.csr
+-rw-------  1 root root  916 Jun 13 22:04 www.meowginx.com.key
+-rw-------  1 root root 1062 Jun 13 22:03 www.meowginx.com.origin.key
+root@CN-INDEX:/projects_certs#

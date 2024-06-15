@@ -1,0 +1,29 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/meowginx_spring?useUnicode=true&characterEncoding=utf8
+    username: root
+    password: Lrq9uDKZ2ichTk4xKPFEMtmFRVpimkXW@163.com
+  session:
+    redis:
+      flush-mode: immediate
+      namespace: meowginx_spring
+      save-mode: on_set_attribute
+  application:
+    name: Meowginx_spring
+  data:
+    redis:
+      host: 127.0.0.1
+      port: 6379
+      connect-timeout: 6s
+      timeout: 6s
+      lettuce:
+        pool:
+          min-idle: 0
+          max-idle: 6
+          max-active: 9
+          max-wait: -1ms
+        shutdown-timeout: 180ms
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.meowginx.backend.model

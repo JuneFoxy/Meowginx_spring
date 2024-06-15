@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.meowginx.backend.mapper.WhatMapper">
+  <resultMap id="BaseResultMap" type="com.meowginx.backend.model.What">
+    <!--@mbg.generated-->
+    <!--@Table what-->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="what" jdbcType="VARCHAR" property="what" />
+    <result column="add" jdbcType="VARCHAR" property="add" />
+    <result column="delete" jdbcType="VARCHAR" property="delete" />
+    <result column="query" jdbcType="VARCHAR" property="query" />
+    <result column="edit" jdbcType="VARCHAR" property="edit" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, what, `add`, `delete`, query, edit
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from what
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from what
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.meowginx.backend.model.What" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into what (what, `add`, `delete`, 
+      query, edit)
+    values (#{what,jdbcType=VARCHAR}, #{add,jdbcType=VARCHAR}, #{delete,jdbcType=VARCHAR}, 
+      #{query,jdbcType=VARCHAR}, #{edit,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.meowginx.backend.model.What" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into what
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="what != null">
+        what,
+      </if>
+      <if test="add != null">
+        `add`,
+      </if>
+      <if test="delete != null">
+        `delete`,
+      </if>
+      <if test="query != null">
+        query,
+      </if>
+      <if test="edit != null">
+        edit,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="what != null">
+        #{what,jdbcType=VARCHAR},
+      </if>
+      <if test="add != null">
+        #{add,jdbcType=VARCHAR},
+      </if>
+      <if test="delete != null">
+        #{delete,jdbcType=VARCHAR},
+      </if>
+      <if test="query != null">
+        #{query,jdbcType=VARCHAR},
+      </if>
+      <if test="edit != null">
+        #{edit,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.meowginx.backend.model.What">
+    <!--@mbg.generated-->
+    update what
+    <set>
+      <if test="what != null">
+        what = #{what,jdbcType=VARCHAR},
+      </if>
+      <if test="add != null">
+        `add` = #{add,jdbcType=VARCHAR},
+      </if>
+      <if test="delete != null">
+        `delete` = #{delete,jdbcType=VARCHAR},
+      </if>
+      <if test="query != null">
+        query = #{query,jdbcType=VARCHAR},
+      </if>
+      <if test="edit != null">
+        edit = #{edit,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.meowginx.backend.model.What">
+    <!--@mbg.generated-->
+    update what
+    set what = #{what,jdbcType=VARCHAR},
+      `add` = #{add,jdbcType=VARCHAR},
+      `delete` = #{delete,jdbcType=VARCHAR},
+      query = #{query,jdbcType=VARCHAR},
+      edit = #{edit,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
